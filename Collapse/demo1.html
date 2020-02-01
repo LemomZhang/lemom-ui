@@ -1,134 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Tab选项卡</title>
+		<style>
+			.container {
+				max-width: 800px;
+				margin: 30px auto;
+				border-radius: 4px;
+				box-shadow: 0 0 4px 0px rgba(0, 0, 0, 0.3);
+				padding: 16px;
+			}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Tab选项卡</title>
-    <style>
-        .container {
-            max-width: 800px;
-            margin: 30px auto;
-            border-radius: 4px;
-            box-shadow: 0 0 4px 0px rgba(0, 0, 0, 0.3);
-            padding: 16px;
-        }
+			.collapse {
+				font-size: 13px;
+			}
 
-        .collapse {
-            font-size: 13px;
-        }
+			.collapse .item {
+				border-top: 1px solid #ddd;
+				cursor: pointer;
+			}
 
-        .collapse .item {
-            border-top: 1px solid #ddd;
-            cursor: pointer;
-        }
+			.collapse .item:last-child {
+				border-bottom: 1px solid #ddd;
+			}
 
-        .collapse .item:last-child {
-            border-bottom: 1px solid #ddd;
-        }
+			.collapse .item-header {
+				color: #303030;
+				font-weight: 500;
+				line-height: 40px;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+			}
 
-        .collapse .item-header {
-            color: #303030;
-            font-weight: 500;
-            line-height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+			.collapse .item-header::after {
+				content: '';
+				display: block;
+				width: 6px;
+				height: 6px;
+				border-top: 1px solid #030303;
+				border-right: 1px solid #030303;
+				transform: rotate(45deg);
+				transition: all 0.3s;
+			}
 
-        .collapse .item-header::after {
-            content: '';
-            display: block;
-            width: 6px;
-            height: 6px;
-            border-top: 1px solid #030303;
-            border-right: 1px solid #030303;
-            transform: rotate(45deg);
-            transition: all .3s;
-        }
+			.collapse .item-content {
+				font-size: 14px;
+				color: #666;
+				height: 0;
+				overflow: hidden;
+				transition: all 0.3s;
+			}
 
-        .collapse .item-content {
-            font-size: 14px;
-            color: #666;
-            height: 0;
-            overflow: hidden;
-            transition: all .3s;
-        }
+			.collapse .item.active .item-header::after {
+				transform: rotate(135deg);
+			}
 
-        .collapse .item.active .item-header::after {
-            transform: rotate(135deg);
-        }
+			.collapse .item.active .item-content {
+				height: auto;
+				padding-bottom: 13px;
+			}
+		</style>
+	</head>
 
-        .collapse .item.active .item-content {
-            height: auto;
-            padding-bottom: 13px;
-        }
-    </style>
-</head>
+	<body>
+		<div class="container">
+			<h2>collapse折叠面板</h2>
+			<div class="collapse">
+				<div class="item">
+					<div class="item-header">一致性 Consistency</div>
+					<div class="item-content">
+						与现实生活一致：与现实生活的流程、逻辑保持一致，遵循用户习惯的语言和概念；<br />
+						在界面中一致：所有的元素和结构需保持一致，比如：设计样式、图标和文本、元素的位置等。
+					</div>
+				</div>
+				<div class="item">
+					<div class="item-header">反馈 Feedback</div>
+					<div class="item-content">
+						控制反馈：通过界面样式和交互动效让用户可以清晰的感知自己的操作；
+						<br />页面反馈：操作后，通过页面元素的变化清晰地展现当前状态。
+					</div>
+				</div>
+				<div class="item">
+					<div class="item-header">效率 Efficiency</div>
+					<div class="item-content">
+						简化流程：设计简洁直观的操作流程；<br />
+						清晰明确：语言表达清晰且表意明确，让用户快速理解进而作出决策；<br />
+						帮助用户识别：界面简单直白，让用户快速识别而非回忆，减少用户记忆负担。<br />
+					</div>
+				</div>
+				<div class="item">
+					<div class="item-header">可控 Controllability</div>
+					<div class="item-content">
+						用户决策：根据场景可给予用户操作建议或安全提示，但不能代替用户进行决策；
+						<br />结果可控：用户可以自由的进行操作，包括撤销、回退和终止当前操作等。
+					</div>
+				</div>
+			</div>
+		</div>
 
-<body>
-    <div class="container">
-        <h2>collapse折叠面板</h2>
-        <div class="collapse">
-            <div class="item">
-                <div class="item-header">一致性 Consistency
-                </div>
-                <div class="item-content">
-                    与现实生活一致：与现实生活的流程、逻辑保持一致，遵循用户习惯的语言和概念；<br>
-                    在界面中一致：所有的元素和结构需保持一致，比如：设计样式、图标和文本、元素的位置等。
-                </div>
-            </div>
-            <div class="item">
-                <div class="item-header">反馈 Feedback
-                </div>
-                <div class="item-content">
-                    控制反馈：通过界面样式和交互动效让用户可以清晰的感知自己的操作；
-                    <br>页面反馈：操作后，通过页面元素的变化清晰地展现当前状态。
-                </div>
-            </div>
-            <div class="item">
-                <div class="item-header">效率 Efficiency
-                </div>
-                <div class="item-content">
-                    简化流程：设计简洁直观的操作流程；<br>
-                    清晰明确：语言表达清晰且表意明确，让用户快速理解进而作出决策；<br>
-                    帮助用户识别：界面简单直白，让用户快速识别而非回忆，减少用户记忆负担。<br>
-                </div>
-            </div>
-            <div class="item">
-                <div class="item-header">可控 Controllability
-                </div>
-                <div class="item-content">
-                    用户决策：根据场景可给予用户操作建议或安全提示，但不能代替用户进行决策；
-                    <br>结果可控：用户可以自由的进行操作，包括撤销、回退和终止当前操作等。
-                </div>
-            </div>
-
-        </div>
-    </div>
-    <script>
-        const $ = s => document.querySelector(s)
-        const $$ = s => document.querySelectorAll(s)
-        class Collapse {
-            constructor($container) {
-                this.$container = $container
-                this.$$item = $container.querySelectorAll('.collapse .item')
-                this.bind()
-            }
-            bind() {
-                this.$$item.forEach(element => {
-                    element.onclick = () => {
-                        this.$$item.forEach($content => {
-                            $content.classList.remove('active')
-                        })
-                        element.classList.add('active')
-                    }
-                });
-            }
-        }
-        new Collapse(document.querySelector('.collapse'))
-    </script>
-</body>
-
+		<div class="container">
+			<h2>collapse可选折叠面板</h2>
+			<div class="collapse">
+				<div class="item">
+					<div class="item-header">一致性 Consistency</div>
+					<div class="item-content">
+						与现实生活一致：与现实生活的流程、逻辑保持一致，遵循用户习惯的语言和概念；<br />
+						在界面中一致：所有的元素和结构需保持一致，比如：设计样式、图标和文本、元素的位置等。
+					</div>
+				</div>
+				<div class="item">
+					<div class="item-header">反馈 Feedback</div>
+					<div class="item-content">
+						控制反馈：通过界面样式和交互动效让用户可以清晰的感知自己的操作；
+						<br />页面反馈：操作后，通过页面元素的变化清晰地展现当前状态。
+					</div>
+				</div>
+				<div class="item">
+					<div class="item-header">效率 Efficiency</div>
+					<div class="item-content">
+						简化流程：设计简洁直观的操作流程；<br />
+						清晰明确：语言表达清晰且表意明确，让用户快速理解进而作出决策；<br />
+						帮助用户识别：界面简单直白，让用户快速识别而非回忆，减少用户记忆负担。<br />
+					</div>
+				</div>
+				<div class="item">
+					<div class="item-header">可控 Controllability</div>
+					<div class="item-content">
+						用户决策：根据场景可给予用户操作建议或安全提示，但不能代替用户进行决策；
+						<br />结果可控：用户可以自由的进行操作，包括撤销、回退和终止当前操作等。
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			const $ = s => document.querySelector(s)
+			const $$ = s => document.querySelectorAll(s)
+			class Collapse {
+				constructor($container, type = 1) {
+					this.$container = $container
+					this.$$item = $container.querySelectorAll('.collapse .item')
+					this.type = type
+					this.bind()
+				}
+				bind() {
+					this.$$item.forEach(element => {
+						element.onclick = () => {
+							if (this.type === 1) {
+								this.$$item.forEach($content => {
+									$content.classList.remove('active')
+								})
+								element.classList.add('active')
+							} else if (this.type === 2) {
+								element.classList.toggle('active')
+							}
+						}
+					})
+				}
+			}
+			new Collapse(document.querySelectorAll('.collapse')[0])
+			new Collapse(document.querySelectorAll('.collapse')[1], 2)
+		</script>
+	</body>
 </html>
